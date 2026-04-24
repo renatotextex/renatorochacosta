@@ -31,4 +31,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Limpa o form
         form.reset();
     });
-});
+
+    // Tema Claro/Escuro
+    const btnTema = document.getElementById('btnTema');
+    btnTema.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    
+    // Opcional: salvar a preferência do usuário no localStorage
+    if(document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('tema', 'dark');
+        } else {
+           localStorage.setItem('tema', 'light');
+        }
+    });
+
+    // Verifica a preferência salva ao carregar a página
+    window.onload = () => {
+        if(localStorage.getItem('tema') === 'dark') {
+            document.body.classList.add('dark-mode');
+            }
+        };
+    });
