@@ -18,6 +18,7 @@ body {
     top: 0;
     text-align: center;
     z-index: 1000;
+    position: fixed;
 }
 
 #menu ul {
@@ -66,19 +67,6 @@ body {
     box-sizing: border-box;
 }
 
-button {
-    background: #2c3e50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #34495e;
-}
-
 /* Variáveis globais para o tema Claro/Escuro */
 :root {
     --bg-color: #f4f4f4;
@@ -103,3 +91,32 @@ body {
 
 #menu { background: var(--nav-bg); }
 #formContato { background: var(--form-bg); }
+
+/* Botão do Tema */
+.theme-switch-wrapper {
+    position: fixed;
+    right: 20px;
+    top: 2%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    gap: 5px;              
+}
+
+/* Botão Switch */
+.theme-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+
+/* Quando ativo (Escuro) */
+input:checked + .slider { background-color: #2196F3; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Texto deo Botão */
+#theme-text {
+    font-size: 0.7rem;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}

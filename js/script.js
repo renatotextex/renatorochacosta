@@ -1,5 +1,29 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Botão do Tema
+    const toggleSwitch = document.querySelector('#checkbox');
+    const themeText = document.querySelector('#theme-text');
+
+    // Mudança
+    toggleSwitch.addEventListener('change', function(e) {
+        if (e.target.checked) {
+            document.body.classList.add('dark-mode');
+            themeText.textContent = "Escuro";
+            localStorage.setItem('tema', 'dark'); // Salva preferência
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeText.textContent = "Claro";
+            localStorage.setItem('tema', 'light');
+        }
+    });
+
+    // Verifica a preferência salva ao carregar a página
+    if (localStorage.getItem('tema') === 'dark') {
+        toggleSwitch.checked = true;
+        document.body.classList.add('dark-mode');
+        themeText.textContent = "Escuro";
+    }
     
     const form = document.getElementById('formContato');
 
@@ -26,29 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        alert("Mensagem enviada com sucesso!");
+        alert("Mensagem enviada com sucesso! Agradecemos o seu contato e retornaremos o mais breve possível.");
         
         // Limpa o form
         form.reset();
     });
 
-    // Tema Claro/Escuro
-    const btnTema = document.getElementById('btnTema');
-    btnTema.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-    
-    // Opcional: salvar a preferência do usuário no localStorage
-    if(document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('tema', 'dark');
-        } else {
-           localStorage.setItem('tema', 'light');
-        }
-    });
-
-    // Verifica a preferência salva ao carregar a página
-    window.onload = () => {
-        if(localStorage.getItem('tema') === 'dark') {
-            document.body.classList.add('dark-mode');
-            }
-        };
     });
