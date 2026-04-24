@@ -78,3 +78,28 @@ button {
 button:hover {
     background: #34495e;
 }
+
+/* Variáveis globais para o tema Claro/Escuro */
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --nav-bg: #2c3e50;
+    --form-bg: #fff;
+}
+
+/* Classe para o tema escuro */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --nav-bg: #000;
+    --form-bg: #1e1e1e;
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#menu { background: var(--nav-bg); }
+#formContato { background: var(--form-bg); }
